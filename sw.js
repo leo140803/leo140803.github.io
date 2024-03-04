@@ -1,6 +1,7 @@
 importScripts('/src/js/idb.js');
 importScripts('/src/js/utility.js');
 
+
 var CACHE_STATIC_NAME = 'static-v10';
 var CACHE_DYNAMIC_NAME = 'dynamic-v2';
 var STATIC_FILES = [
@@ -118,6 +119,7 @@ self.addEventListener('fetch', function (event) {
           } else {
             return fetch(event.request)
               .then(function (res) {
+
                 return caches.open(CACHE_DYNAMIC_NAME)
                   .then(function (cache) {
                     // trimCache(CACHE_DYNAMIC_NAME, 3);

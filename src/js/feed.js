@@ -1,6 +1,7 @@
 var installButton = document.querySelector('#install-button');
 // Get the container where the cards will be inserted
 var exploreGrid = document.querySelector('.explore__grid');
+var CACHE_STATIC_NAME = 'static-v10';
 
 function openCreatePostModal() {
   if (deferredPrompt) {
@@ -75,7 +76,11 @@ function createCard(data) {
 
   var button = document.createElement('button');
   button.className = 'button';
-  button.setAttribute('slug-data', 'yyy');
+  button.id = data.slug;
+  // button.onclick= clicked(button);
+
+  button.setAttribute('slug-data', data.slug);
+
 
   var link = document.createElement('a');
   link.href = '#'; // Update the href attribute with the appropriate URL
@@ -89,8 +94,43 @@ function createCard(data) {
   cardDiv.appendChild(cardContentDiv);
   exploreGrid.appendChild(cardDiv);
 
-  
+  button.addEventListener('click', function () {
+    clicked(data.slug);
+  });
+
+
 }
+
+
+
+function clicked(slug) {
+  alert('ya');
+  var url = 'https://detail-1127b-default-rtdb.asia-southeast1.firebasedatabase.app/details/' + slug + '.json';
+  var networkDataReceived = false;
+
+  if (!sessionStorage.getItem(slug)) {
+    fetch(url)
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (data) {
+        networkDataReceived = true;
+        localStorage.setItem('now', JSON.stringify(data));
+        console.log(data);
+        localStorage.setItem(slug, JSON.stringify(data));
+        sessionStorage.setItem(slug, true); // Menandai bahwa data sudah dimuat
+        window.location.href = '/detail-yoga.html'; // Arahkan ke halaman detail setelah data dimuat
+      })
+      .catch(function (error) {
+        console.error('Fetch error:', error);
+        window.location.href = '/offline.html'; // Arahkan ke halaman offline jika terjadi kesalahan fetch
+      });
+  } else {
+    // Jika data sudah ada di session storage, arahkan ke halaman detail
+    window.location.href = '/detail-yoga.html';
+  }
+}
+
 
 
 
@@ -137,4 +177,6 @@ if ('indexedDB' in window) {
       }
     });
 }
+
+
 

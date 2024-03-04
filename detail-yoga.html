@@ -49,7 +49,7 @@
             <span class="bg__blur"></span>
             <span class="bg__blur header__blur"></span>
             <span class="logo"><i class="ri-heart-pulse-fill"></i></span>
-            <h1><span>YOGA CLASS</span></h1>
+            <h1><span class="title"></span></h1>
             <p>
                 Strength isn't just about physical power, it's also about mental resilience. Embrace the journey, for
                 every step forward is a victory in itself.
@@ -78,6 +78,12 @@
     <script src="/src/js/idb.js"></script>
     <script src="/src/js/utility.js"></script>
     <script src="/src/js/app.js"></script>
+    <script>
+        var spanElement = document.querySelector('.title');
+        var nowData = JSON.parse(localStorage.getItem('now'));
+        spanElement.textContent = nowData.title;
+        console.log(nowData);
+    </script>
     <!-- <script src="/src/js/feed.js"></script> -->
 </body>
 
