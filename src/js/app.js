@@ -1,6 +1,5 @@
 
 var deferredPrompt;
-console.log('ngoke');
 
 if (!window.Promise) {
   window.Promise = Promise;
@@ -16,7 +15,6 @@ if ('serviceWorker' in navigator) {
       console.log(err);
     });
 }else{
-  console.log('hadeh');
 }
 
 window.addEventListener('beforeinstallprompt', function(event) {

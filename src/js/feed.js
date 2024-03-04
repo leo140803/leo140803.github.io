@@ -32,36 +32,10 @@ function clearCards() {
   }
 }
 
-// function createCard(data) {
-//   var cardWrapper = document.createElement('div');
-//   cardWrapper.className = 'shared-moment-card mdl-card mdl-shadow--2dp';
-//   var cardTitle = document.createElement('div');
-//   cardTitle.className = 'mdl-card__title';
-//   cardTitle.style.backgroundImage = 'url(' + data.image + ')';
-//   cardTitle.style.backgroundSize = 'cover';
-//   cardTitle.style.height = '180px';
-//   cardWrapper.appendChild(cardTitle);
-//   var cardTitleTextElement = document.createElement('h2');
-//   cardTitleTextElement.style.color = 'white';
-//   cardTitleTextElement.className = 'mdl-card__title-text';
-//   cardTitleTextElement.textContent = data.title;
-//   cardTitle.appendChild(cardTitleTextElement);
-//   var cardSupportingText = document.createElement('div');
-//   cardSupportingText.className = 'mdl-card__supporting-text';
-//   cardSupportingText.textContent = data.location;
-//   cardSupportingText.style.textAlign = 'center';
-//   // var cardSaveButton = document.createElement('button');
-//   // cardSaveButton.textContent = 'Save';
-//   // cardSaveButton.addEventListener('click', onSaveButtonClicked);
-//   // cardSupportingText.appendChild(cardSaveButton);
-//   cardWrapper.appendChild(cardSupportingText);
-//   componentHandler.upgradeElement(cardWrapper);
-//   sharedMomentsArea.appendChild(cardWrapper);
-// }
 
-// Create a function to generate the card
+
+
 function createCard(data) {
-  // Create elements
   var cardDiv = document.createElement('div');
   cardDiv.className = 'card container ' + data.class;
   cardDiv.setAttribute('data-aos', 'fade-up');
@@ -77,13 +51,12 @@ function createCard(data) {
   var button = document.createElement('button');
   button.className = 'button';
   button.id = data.slug;
-  // button.onclick= clicked(button);
 
   button.setAttribute('slug-data', data.slug);
 
 
   var link = document.createElement('a');
-  link.href = '#'; // Update the href attribute with the appropriate URL
+  link.href = '#'; 
   link.className = 'text-decoration-none text-white';
   link.textContent = 'See Detail';
 
@@ -104,11 +77,9 @@ function createCard(data) {
 
 
 function clicked(slug) {
-  alert('ya');
   var url = 'https://detail-1127b-default-rtdb.asia-southeast1.firebasedatabase.app/details/' + slug + '.json';
-  var networkDataReceived = false;
 
-  if (!sessionStorage.getItem(slug)) {
+  if (!localStorage.getItem(slug)) {
     fetch(url)
       .then(function (res) {
         return res.json();
@@ -118,27 +89,17 @@ function clicked(slug) {
         localStorage.setItem('now', JSON.stringify(data));
         console.log(data);
         localStorage.setItem(slug, JSON.stringify(data));
-        sessionStorage.setItem(slug, true); // Menandai bahwa data sudah dimuat
-        window.location.href = '/detail-yoga.html'; // Arahkan ke halaman detail setelah data dimuat
+        
+        window.location.href = '/detail.html'; 
       })
       .catch(function (error) {
         console.error('Fetch error:', error);
-        window.location.href = '/offline.html'; // Arahkan ke halaman offline jika terjadi kesalahan fetch
+        window.location.href = '/offline.html'; 
       });
   } else {
-    // Jika data sudah ada di session storage, arahkan ke halaman detail
-    window.location.href = '/detail-yoga.html';
+    window.location.href = '/detail.html';
   }
 }
-
-
-
-
-// // Create the card
-// var strengthCard = createCard('Strength', 'gym');
-
-// // Append the card to the container
-// exploreGrid.appendChild(strengthCard);
 
 
 function updateUI(data) {
