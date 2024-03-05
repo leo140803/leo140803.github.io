@@ -97,6 +97,7 @@ function clicked(slug) {
         window.location.href = '/offline.html'; 
       });
   } else {
+    localStorage.setItem('now', localStorage.getItem(slug));
     window.location.href = '/detail.html';
   }
 }
