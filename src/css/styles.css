@@ -9,6 +9,10 @@
     --max-width: 1200px !important;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 h3 {
     color: var(--white) !important;
 }
