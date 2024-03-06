@@ -1,4 +1,3 @@
-
 :root {
     --primary-color: #111317 !important;
     --primary-color-light: #1f2125 !important;
@@ -10,7 +9,7 @@
     --max-width: 1200px !important;
 }
 
-h3{
+h3 {
     color: var(--white) !important;
 }
 
@@ -19,6 +18,7 @@ h3{
     margin: 0;
     box-sizing: border-box;
 }
+
 
 .section__container {
     max-width: var(--max-width);
@@ -610,6 +610,20 @@ nav {
 }
 
 @media (width < 600px) {
+
+    .header__content>h1 {
+        font-size: 40px !important;
+        line-height: 1.5;
+    }
+
+    .header__image img {
+        max-width: 400px !important;
+        margin-top: 0 !important;
+        margin-right: 0 !important;
+        margin-bottom: 0 !important;
+        margin-left: 0 !important;
+    }
+
     .explore__header {
         flex-direction: column;
     }
