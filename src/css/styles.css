@@ -562,6 +562,14 @@ nav {
     color: var(--white) !important;
 }
 
+@media (max-width: 1400px) and (min-width: 900px) {
+    .explore__grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 1rem;
+    }
+}
+
+
 @media (width < 900px) {
     .nav__links {
         display: none;
