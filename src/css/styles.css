@@ -686,10 +686,8 @@ nav {
 
 }
 
-.yoga {
+/* .yoga {
     background-image: url('../../assets/yoga.jpeg');
-    /* Specify the path to your image */
-
 }
 
 .zumba {
@@ -718,7 +716,7 @@ nav {
 
 .pound {
     background-image: url('../../assets/pound.jpg');
-}
+} */
 
 .logo {
     display: inline-block;

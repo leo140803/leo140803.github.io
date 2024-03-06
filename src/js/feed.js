@@ -38,6 +38,7 @@ function clearCards() {
 function createCard(data) {
   var cardDiv = document.createElement('div');
   cardDiv.className = 'card container ' + data.class;
+  cardDiv.setAttribute('style', 'background-image: url("'+data.image+'")')
   cardDiv.setAttribute('data-aos', 'fade-up');
   cardDiv.setAttribute('data-aos-duration', '1000');
 
